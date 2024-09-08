@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+org.eclipse.ant.ui.AntElementHyperlinkDetector=true
+org.eclipse.jdt.debug.ui.hyperlinkdetector.stepIntoSelection=true
+org.eclipse.jdt.internal.ui.javaeditor.NLSKeyHyperlinkDetector=true
+org.eclipse.jdt.internal.ui.propertiesfileeditor.PropertyKeyHyperlinkDetector=true
+org.eclipse.lsp4e.documentLinkDetector=true
+org.eclipse.lsp4e.hyperlinkDetector=true
+org.eclipse.ui.internal.editors.text.URLHyperlinkDetector=true
