@@ -10,6 +10,12 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.mysite.sbb.answer.Answer;
+import com.mysite.sbb.answer.AnswerRepository;
+import com.mysite.sbb.question.Question;
+import com.mysite.sbb.question.QuestionRepository;
 
 @SpringBootTest
 class SbbApplicationTests {
@@ -20,12 +26,20 @@ class SbbApplicationTests {
 	@Autowired
 	private AnswerRepository answerRepository;
 
+	@Transactional
 	@Test
 	void testJpa() {
-		Optional<Answer> oa = this.answerRepository.findById(1); // id가 1인 답변 조회
-		assertTrue(oa.isPresent());
-		Answer a = oa.get();
-		assertEquals(2, a.getQuestion().getId()); // 답변과 연결된 질문의 id가 2인지 확인 
+		Optional<Question> oq = this.questionRepository.findById(2); // id가 2인 질문 조회
+		assertTrue(oq.isPresent());
+		Question q = oq.get();
+		
+		List<Answer> answerList = q.getAnswerList();
+		
+		assertEquals(1, answerList.size());
+		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+		// 이 코드를 실행하면 hibernate.LazyInitializationException발생. Q레포지토리에서 findById로 Q객체를 조회하면 DB세션이 끊어지기 때문.
+		// 그래서 그 이후 실행되는 q.getAnswerList메소드는 세션이 종료되어 오류가 발생함
+		// 테스트코드에서만 발생하는 문제로, 실제로는 발생하지 않지만 방지하고싶다면 @Transactional어노테이션을 사용하면 됨.
 	}
 
 }
@@ -109,3 +123,17 @@ class SbbApplicationTests {
 //assertTrue(oa.isPresent());
 //Answer a = oa.get();
 //assertEquals(2, a.getQuestion().getId()); // 답변과 연결된 질문의 id가 2인지 확인 
+
+
+// Question으로 Answer조회
+//Optional<Question> oq = this.questionRepository.findById(2); // id가 2인 질문 조회
+//assertTrue(oq.isPresent());
+//Question q = oq.get();
+//
+//List<Answer> answerList = q.getAnswerList();
+//
+//assertEquals(1, answerList.size());
+//assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+// 이 코드를 실행하면 hibernate.LazyInitializationException발생. Q레포지토리에서 findById로 Q객체를 조회하면 DB세션이 끊어지기 때문.
+// 그래서 그 이후 실행되는 q.getAnswerList메소드는 세션이 종료되어 오류가 발생함
+// 테스트코드에서만 발생하는 문제로, 실제로는 발생하지 않지만 방지하고싶다면 @Transactional어노테이션을 사용하면 됨.
