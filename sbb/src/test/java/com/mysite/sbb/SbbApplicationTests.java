@@ -16,6 +16,7 @@ import com.mysite.sbb.answer.Answer;
 import com.mysite.sbb.answer.AnswerRepository;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
+import com.mysite.sbb.question.QuestionService;
 
 @SpringBootTest
 class SbbApplicationTests {
@@ -25,21 +26,17 @@ class SbbApplicationTests {
 	
 	@Autowired
 	private AnswerRepository answerRepository;
+	
+	@Autowired
+	private QuestionService questionService;
 
-	@Transactional
 	@Test
 	void testJpa() {
-		Optional<Question> oq = this.questionRepository.findById(2); // id가 2인 질문 조회
-		assertTrue(oq.isPresent());
-		Question q = oq.get();
-		
-		List<Answer> answerList = q.getAnswerList();
-		
-		assertEquals(1, answerList.size());
-		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
-		// 이 코드를 실행하면 hibernate.LazyInitializationException발생. Q레포지토리에서 findById로 Q객체를 조회하면 DB세션이 끊어지기 때문.
-		// 그래서 그 이후 실행되는 q.getAnswerList메소드는 세션이 종료되어 오류가 발생함
-		// 테스트코드에서만 발생하는 문제로, 실제로는 발생하지 않지만 방지하고싶다면 @Transactional어노테이션을 사용하면 됨.
+		for(int i=1; i<=300; i++) {
+			String subject = String.format("테스트데이터:[%03d]", i);
+			String content = "내용없음";
+			this.questionService.create(subject, content);
+		}
 	}
 
 }
@@ -137,3 +134,15 @@ class SbbApplicationTests {
 // 이 코드를 실행하면 hibernate.LazyInitializationException발생. Q레포지토리에서 findById로 Q객체를 조회하면 DB세션이 끊어지기 때문.
 // 그래서 그 이후 실행되는 q.getAnswerList메소드는 세션이 종료되어 오류가 발생함
 // 테스트코드에서만 발생하는 문제로, 실제로는 발생하지 않지만 방지하고싶다면 @Transactional어노테이션을 사용하면 됨.
+
+//Optional<Question> oq = this.questionRepository.findById(2); // id가 2인 질문 조회
+//assertTrue(oq.isPresent());
+//Question q = oq.get();
+//
+//List<Answer> answerList = q.getAnswerList();
+//
+//assertEquals(1, answerList.size());
+//assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+//// 이 코드를 실행하면 hibernate.LazyInitializationException발생. Q레포지토리에서 findById로 Q객체를 조회하면 DB세션이 끊어지기 때문.
+//// 그래서 그 이후 실행되는 q.getAnswerList메소드는 세션이 종료되어 오류가 발생함
+//// 테스트코드에서만 발생하는 문제로, 실제로는 발생하지 않지만 방지하고싶다면 @Transactional어노테이션을 사용하면 됨.
