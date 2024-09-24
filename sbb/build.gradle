@@ -30,6 +30,8 @@ dependencies {
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	testImplementation 'org.junit.jupiter:junit-jupiter'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // 해당 라이브러리가 테스트 실행 시에만 사용됨을 의미함
 }
 
