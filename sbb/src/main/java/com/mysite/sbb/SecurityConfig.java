@@ -19,7 +19,8 @@ public class SecurityConfig {
 		http.authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
 				.requestMatchers(new AntPathRequestMatcher("/**")).permitAll()) // 인증되지 않은 모든 페이지의 요청을 허락한다는 의미(로그인 불필요)
 				.csrf((csrf) -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))) // h2-console은 제외
-				.headers((headers) -> headers.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))); // X-Frame-Opton 헤더를 DENY -> SAMEORIGIN으로 변경
+				.headers((headers) -> headers.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))) // X-Frame-Opton 헤더를 DENY -> SAMEORIGIN으로 변경
+				.formLogin((formLogin) -> formLogin.loginPage("/user/login").defaultSuccessUrl("/")); // 로그인url 등록
 		return http.build();
 	}
 	
