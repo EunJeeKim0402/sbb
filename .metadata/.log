@@ -7151,3 +7151,6 @@ Caused by: java.io.IOException: 파이프가 닫히는 중입니다
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-10-02 08:42:39.119
 !MESSAGE Started org.springframework.tooling.boot.ls LS process 27252
+
+!ENTRY org.eclipse.core.jobs 2 2 2024-10-02 08:45:48.162
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.lsp4e.LanguageServerWrapper$2
