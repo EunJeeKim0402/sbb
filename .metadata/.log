@@ -9597,3 +9597,6 @@ END
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-10-04 08:35:11.373
 !MESSAGE Started org.springframework.tooling.boot.ls LS process 30832
+
+!ENTRY org.eclipse.core.jobs 2 2 2024-10-04 08:37:38.619
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.lsp4e.LanguageServerWrapper$2
