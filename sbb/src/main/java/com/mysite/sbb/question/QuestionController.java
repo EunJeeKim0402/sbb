@@ -34,9 +34,11 @@ public class QuestionController {
 	
 	// 메인 질문목록 페이지
 	@GetMapping("/list")
-	public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) { // Model객체는 java클래스와 템플릿 간의 연결고리 역할을 함
-		Page<Question> paging = this.questionService.getList(page);
+	public String list(Model model, @RequestParam(value="page", defaultValue="0") int page,
+			@RequestParam(value = "kw", defaultValue = "") String kw) { // Model객체는 java클래스와 템플릿 간의 연결고리 역할을 함
+		Page<Question> paging = this.questionService.getList(page, kw);
 		model.addAttribute("paging", paging);
+		model.addAttribute("kw", kw);
 		return "question_list";
 	}
 	

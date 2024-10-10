@@ -40,7 +40,7 @@ public class QuestionService {
 				query.distinct(true); // 중복 제거
 				Join<Question, SiteUser> u1 = q.join("author", JoinType.LEFT);
 				Join<Question, Answer> a = q.join("answerList", JoinType.LEFT);
-				Join<Answer, SiteUser> u2 = q.join("author", JoinType.LEFT);
+				Join<Answer, SiteUser> u2 = a.join("author", JoinType.LEFT);
 				return cb.or(cb.like(q.get("subject"), "%" + kw + "%"), // 제목
 					   cb.like(q.get("content"), "%" + kw + "%"), // 내용
 					   cb.like(u1.get("username"), "%" + kw + "%"), // 질문 작성자
@@ -50,11 +50,12 @@ public class QuestionService {
 		};
 	}
 	
-	public Page<Question> getList(int page) {
+	public Page<Question> getList(int page, String kw) {
 		List<Sort.Order> sorts = new ArrayList<>();
 		sorts.add(Sort.Order.desc("createDate"));
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-		return this.questionRepository.findAll(pageable);
+		Specification<Question> spec = search(kw);
+		return this.questionRepository.findAll(spec, pageable);
 	}
 	
 	public Question getQuestion(Integer id) {
