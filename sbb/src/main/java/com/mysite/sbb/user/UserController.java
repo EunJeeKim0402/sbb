@@ -2,8 +2,10 @@ package com.mysite.sbb.user;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 
@@ -50,8 +52,11 @@ public class UserController {
 	}
 	
 	@GetMapping("/login")
-	public String login() {
-		return "login_form";
+	public String login(@RequestParam(value = "error", required = false) String error, Model model) {
+	    if (error != null) {
+	        model.addAttribute("errorMessage", "사용자 ID 또는 비밀번호를 확인해주세요.");
+	    }
+	    return "login_form";
 	}
 
 }

@@ -1,9 +1,9 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container my-3">
 	<form th:action="@{/user/login}" method="post">
-		<div th:if="@{param.error}">
+		<div th:if="${errorMessage}">
 			<div class="alert alert-danger">
-				사용자 ID 또는 비밀번호를 확인해주세요.
+				<span th:text="${errorMessage}"></span>
 			</div>
 			<!--<div th:replace="~{form_errors :: formErrorsFragment}"></div>-->
 		</div>
