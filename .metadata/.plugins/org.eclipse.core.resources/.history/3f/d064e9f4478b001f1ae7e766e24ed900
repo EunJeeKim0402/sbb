@@ -1,7 +1,0 @@
-<html layout:decorate="~{layout}">
-<div layout:fragment="content" class="container my-3">
-	<div style="background-color: pink;">
-		호호호
-	</div>
-</div>
-</html>
