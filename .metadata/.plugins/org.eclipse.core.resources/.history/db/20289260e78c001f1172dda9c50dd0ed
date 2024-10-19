@@ -37,7 +37,7 @@
 	<div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 	
 	  <a href="/" class="logo d-flex align-items-center">
-	    <h1 class="sitename">태성's 홈페이지</h2>
+	    <h1 class="sitename">hello</h2>
 	  </a>
 	
 	  <nav id="navmenu" class="navmenu">
