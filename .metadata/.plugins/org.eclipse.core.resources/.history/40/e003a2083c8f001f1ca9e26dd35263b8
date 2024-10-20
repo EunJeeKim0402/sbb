@@ -122,7 +122,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="div3" style="width: 100%; padding: 50px 0px 50px 0px;">
+	<div id="div3" style="border: 1px solid black; width: 100%; padding: 50px 0px 50px 0px;">
 		<div style="justify-content: space-between; display: flex; align-items: flex-end;">
 			<div>
 				<span>베스트 제품</span>
