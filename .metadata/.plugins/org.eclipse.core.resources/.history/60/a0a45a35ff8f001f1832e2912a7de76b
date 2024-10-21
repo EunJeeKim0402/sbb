@@ -1,0 +1,238 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">	
+<style>
+	#slider-container {
+	    width: 100%;
+	    height: 550px;
+	    position: relative;
+	    overflow: hidden;
+	}
+	.slider-wrapper {
+	    display: flex;
+	    width: 300%; 
+	    height: 100%;
+	    transition: transform 0.5s ease-in-out;
+	}
+	#slider img {
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	}
+	.nav-button {
+	    position: absolute;
+	    top: 50%;
+	    transform: translateY(-50%);
+	    background: none;
+	    color: #333; 
+	    border: none;
+	    padding: 15px; 
+	    cursor: pointer;
+	    border-radius: 50%; 
+	    z-index: 100;
+	    transition: background-color 0.3s ease; 
+	}
+	.prev {
+	    left: 10px;
+		font-size: 40px;
+		color: floralwhite;
+	}
+	.next {
+	    right: 10px;
+		font-size: 40px;
+		color: floralwhite;
+	}
+	.mainProducts { 
+		width:25%;
+		padding: 40px 10px 40px 10px;
+		text-align: center;
+	}
+	.mainProducts img {
+		margin-bottom: 10px;
+		width:95%;
+		border-radius: 50%;
+	}
+	.mainProducts p {
+		font-size: 11px;
+	}
+	#mainDiv1 b {
+		font-size: 15px;
+	}
+	#moreProducts {
+		cursor: pointer;
+		font-size: 12px;
+		margin-top: 30px;
+	}
+	
+	
+	#div3 img {
+
+		}
+	#imgDiv {
+		
+	}
+	#imgDiv img {
+		width: 100%;
+		border-radius: 15px;
+		padding: 10px;
+	}
+	#imgDiv p {
+		font-size: 13px;
+		width: 90%;
+		text-align: center;
+	}
+	#imgDiv div {
+		display: flex; 
+		flex-direction: column; 
+		align-items: center; 
+		text-align: center;
+	}
+	#imgDiv span {
+		font-size: 15px;
+		margin-top: -10px;
+	}
+	
+	
+	.table th {
+		font-size: 14px;
+	}
+</style>
+<div style="width: 100%; justify-content: center; margin: 0 auto; display: flex; flex-direction: column;">
+	<!-------------------------------------------- 첫번째 div -------------------------------------------->
+	<div class="slider-container" id="slider-container">
+	    <div class="slider-wrapper" id="slider">
+			<img src="https://e1.pxfuel.com/desktop-wallpaper/915/587/desktop-wallpaper-rabbit-for-computer-1080%C3%97864-of-rabbits-rabbit.jpg" alt="Image 3">
+	        <img src="https://i.namu.wiki/i/9ZQ006q6J9MdhdjfM6DPpCbIsfaLezg5Fr9GyvtmRtEAItzwSV4DbpRlyG-ZMxgTVn4_5O-hg8DHpZSwYsRobA.webp" alt="Image 2">
+			<img src="https://static.news.zumst.com/images/37/2023/01/08/3e97c0289e394e45b70b9bb628b30f05.jpg" alt="Image 1">
+		</div>
+	
+	    <button class="nav-button prev" onclick="prevSlide()">&#10094;</button>
+	    <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
+	</div>
+	<!-------------------------------------------- 두번째 div -------------------------------------------->
+	<div style="background-color: whitesmoke; width:100%; display: flex; padding: 20px 0px;">
+		<div style="width:25%; padding: 45px 0px 0px 25px;" id="mainDiv1">
+			<h1>HOT</h1>
+			<b>오늘의 최고 인기상품!</b>
+			<br/>
+			<b>놓치지마세요.</b>
+			<p id="moreProducts">더보기 ></p>
+		</div>
+		<div style="width:75%; display: flex;">
+			<div class="mainProducts">
+				<img src="https://sitem.ssgcdn.com/95/65/51/item/1000565516595_i1_750.jpg">
+				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
+				<span>10%</span>
+				<span>5,000원</span>
+			</div>
+			<div class="mainProducts">
+				<img src="https://sitem.ssgcdn.com/95/65/51/item/1000565516595_i1_750.jpg">
+				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
+				<span>10%</span>
+				<span>5,000원</span>
+			</div>
+			<div class="mainProducts">
+				<img src="https://sitem.ssgcdn.com/95/65/51/item/1000565516595_i1_750.jpg">
+				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
+				<span>10%</span>
+				<span>5,000원</span>
+			</div>
+			<div class="mainProducts">
+				<img src="https://sitem.ssgcdn.com/95/65/51/item/1000565516595_i1_750.jpg">
+				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
+				<span>10%</span>
+				<span>5,000원</span>
+			</div>
+		</div>
+	</div>
+	<!-------------------------------------------- 세번째 div -------------------------------------------->
+	<div id="div3" style="width: 100%; padding: 60px 0px 60px 0px;">
+		<div style="justify-content: space-between; display: flex; align-items: flex-end;">
+			<div style="margin-left: 10px; margin-bottom: 7px;">
+				<span style="font-size: 17px;"><b>베스트 제품</b></span>
+				<span style="font-size: 15px; color: gray;"><b>Best Products</b></span>
+			</div>
+			<p id="moreProducts" style="margin: 0;">더보기 ></p>
+		</div>
+		<div id="imgDiv" style="display: flex; width: 100%;">
+			<div>
+				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
+				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
+				<span><b>5,000</b>원</span>
+			</div>
+			<div>
+				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
+				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
+				<span><b>5,000</b>원</span>
+			</div>
+			<div>
+				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
+				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
+				<span><b>5,000</b>원</span>
+			</div>
+			<div>
+				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
+				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
+				<span><b>5,000</b>원</span>
+			</div>
+		</div>
+	</div>
+	<!-------------------------------------------- 네번째 div -------------------------------------------->
+	<div id="div4" style="background-color: pink; width: 100%;">
+		<div style="justify-content: space-between; display: flex; align-items: flex-end;">
+			<div style="margin-left: 10px; margin-bottom: 7px;">
+				<span style="font-size: 17px;"><b>게시판</b></span>
+			</div>
+			<p id="moreProducts" style="margin: 0;">전체 게시글 ></p>
+		</div>
+		<div>
+			<table class="table">
+				<thead class="">
+					<tr class="text-center">
+						<th>번호</th>
+						<th style="width:50%">제목</th>
+						<th>글쓴이</th>
+						<th>작성일시</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="text-center" th:each="question, loop : ${paging}">
+						<td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
+						<td class="text-start">
+							<a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+							<span class="text-danger small ms-2" th:if="${#lists.size(question.answerList) > 0}"
+								th:text="${#lists.size(question.answerList)}"></span>
+						</td>
+						<td><span th:if="${question.author != null}" th:text="${question.author.username}"></span></td>
+						<td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script>
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const slider = document.getElementById('slider');
+	const sliderWidth = 100 / totalSlides;
+
+    function showSlide(slideIndex) {
+		const offset = -slideIndex * sliderWidth; 
+        slider.style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides; 
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+	window.onload = () => {
+	    document.getElementById('slider').style.width = `${totalSlides * 100}%`; // 이미지 개수만큼 슬라이더 너비 설정
+	};
+</script>
+</div>
+</html>

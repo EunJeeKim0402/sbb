@@ -75,8 +75,40 @@
 		border-radius: 15px;
 		padding: 10px;
 	}
+	#imgDiv p {
+		font-size: 13px;
+		width: 90%;
+		text-align: center;
+	}
+	#imgDiv div {
+		display: flex; 
+		flex-direction: column; 
+		align-items: center; 
+		text-align: center;
+	}
+	#imgDiv span {
+		font-size: 15px;
+		margin-top: -10px;
+	}
+	
+	
+	#div3 {
+		margin: 30px 0px;
+	}
+	.table {
+		margin: 20px 0px 20px 0px;
+		border-top: 1px solid black;
+		border-collapse: collapse;
+	}
+	.table th {
+		font-size: 14px;
+	}
+	.table tbody tr:last-child td {
+			border-bottom: 1px solid black;
+		}
 </style>
 <div style="width: 100%; justify-content: center; margin: 0 auto; display: flex; flex-direction: column;">
+	<!-------------------------------------------- 첫번째 div -------------------------------------------->
 	<div class="slider-container" id="slider-container">
 	    <div class="slider-wrapper" id="slider">
 			<img src="https://e1.pxfuel.com/desktop-wallpaper/915/587/desktop-wallpaper-rabbit-for-computer-1080%C3%97864-of-rabbits-rabbit.jpg" alt="Image 3">
@@ -87,6 +119,7 @@
 	    <button class="nav-button prev" onclick="prevSlide()">&#10094;</button>
 	    <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
 	</div>
+	<!-------------------------------------------- 두번째 div -------------------------------------------->
 	<div style="background-color: whitesmoke; width:100%; display: flex; padding: 20px 0px;">
 		<div style="width:25%; padding: 45px 0px 0px 25px;" id="mainDiv1">
 			<h1>HOT</h1>
@@ -122,11 +155,12 @@
 			</div>
 		</div>
 	</div>
-	<div id="div3" style="width: 100%; padding: 50px 0px 50px 0px;">
+	<!-------------------------------------------- 세번째 div -------------------------------------------->
+	<div id="div3" style="width: 100%; padding: 60px 0px 60px 0px;">
 		<div style="justify-content: space-between; display: flex; align-items: flex-end;">
-			<div>
-				<span>베스트 제품</span>
-				<span>Best Products</span>
+			<div style="margin-left: 10px; margin-bottom: 7px;">
+				<span style="font-size: 17px;"><b>베스트 제품</b></span>
+				<span style="font-size: 15px; color: gray;"><b>Best Products</b></span>
 			</div>
 			<p id="moreProducts" style="margin: 0;">더보기 ></p>
 		</div>
@@ -134,23 +168,56 @@
 			<div>
 				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
 				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span>5,000원</span>
+				<span><b>5,000</b>원</span>
 			</div>
 			<div>
 				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
 				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span>5,000원</span>
+				<span><b>5,000</b>원</span>
 			</div>
 			<div>
 				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
 				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span>5,000원</span>
+				<span><b>5,000</b>원</span>
 			</div>
 			<div>
 				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
 				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span>5,000원</span>
+				<span><b>5,000</b>원</span>
 			</div>
+		</div>
+	</div>
+	<!-------------------------------------------- 네번째 div -------------------------------------------->
+	<div id="div4" style="">
+		<div style="justify-content: space-between; display: flex; align-items: flex-end;">
+			<div style="margin-left: 10px; margin-bottom: 7px;">
+				<span style="font-size: 17px;"><b>게시판</b></span>
+			</div>
+			<p id="moreProducts" style="margin: 0;">전체 게시글 ></p>
+		</div>
+		<div>
+			<table class="table">
+				<thead class="">
+					<tr class="text-center">
+						<th>번호</th>
+						<th style="width:50%">제목</th>
+						<th>글쓴이</th>
+						<th>작성일시</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="text-center" th:each="question, loop : ${paging}">
+						<td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
+						<td class="text-start">
+							<a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+							<span class="text-danger small ms-2" th:if="${#lists.size(question.answerList) > 0}"
+								th:text="${#lists.size(question.answerList)}"></span>
+						</td>
+						<td><span th:if="${question.author != null}" th:text="${question.author.username}"></span></td>
+						<td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
