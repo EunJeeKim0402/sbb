@@ -220,6 +220,10 @@
 			</table>
 		</div>
 	</div>
+	<!--footer-->
+	<div style="background-color: pink; width: 100%; border-top: 0.1px solid black;">
+		
+	</div>
 </div>
 <script>
     let currentSlide = 0;

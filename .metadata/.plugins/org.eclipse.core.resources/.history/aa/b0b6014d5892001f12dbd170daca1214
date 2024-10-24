@@ -42,6 +42,6 @@
 	<!--자바스크립트-->
 	<th:block layout:fragment="script"></th:block>
 	<!--footer-->
-	<th:block th:replace="~{footer :: footerLayout}"></th:block>
+	<th:block th:replace="/layout/fragments/footer :: footerLayout"></th:block>
 </body>
 </html>

@@ -120,7 +120,7 @@
 	    <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
 	</div>
 	<!-------------------------------------------- 두번째 div -------------------------------------------->
-	<div style="background-color: whitesmoke; width:100%; display: flex; padding: 50px 0px;">
+	<div style="background-color: whitesmoke; width:100%; display: flex; padding: 20px 0px;">
 		<div style="width:25%; padding: 45px 0px 0px 25px;" id="mainDiv1">
 			<h1>HOT</h1>
 			<b>오늘의 최고 인기상품!</b>
@@ -156,7 +156,7 @@
 		</div>
 	</div>
 	<!-------------------------------------------- 세번째 div -------------------------------------------->
-	<div id="div3" style="width: 100%; padding: 70px 0px 70px 0px;">
+	<div id="div3" style="width: 100%; padding: 60px 0px 60px 0px;">
 		<div style="justify-content: space-between; display: flex; align-items: flex-end;">
 			<div style="margin-left: 10px; margin-bottom: 7px;">
 				<span style="font-size: 17px;"><b>베스트 제품</b></span>

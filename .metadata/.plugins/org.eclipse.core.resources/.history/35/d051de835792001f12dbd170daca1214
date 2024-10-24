@@ -120,7 +120,7 @@
 	    <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
 	</div>
 	<!-------------------------------------------- 두번째 div -------------------------------------------->
-	<div style="background-color: whitesmoke; width:100%; display: flex; padding: 50px 0px;">
+	<div style="background-color: whitesmoke; width:100%; display: flex; padding: 30px 0px;">
 		<div style="width:25%; padding: 45px 0px 0px 25px;" id="mainDiv1">
 			<h1>HOT</h1>
 			<b>오늘의 최고 인기상품!</b>
