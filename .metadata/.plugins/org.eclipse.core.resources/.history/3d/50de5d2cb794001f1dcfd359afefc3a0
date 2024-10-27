@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="footerLayout">
+<style>
+	#footer {
+		border-top: 1px solid lightgray;
+		background-color: whitesmoke;
+		flex-shrink: 0; 
+        padding: 40px; 
+        text-align: center;
+		align-items: center;
+		flex-direction: column; 
+		display: flex; 
+        justify-content: center;
+        align-items: center;
+		width: 1300px;
+	}
+	#footerDiv {
+		
+		border: 1px solid black;
+	}
+</style>
+<footer>
+    <div class="mt-5" id="footer">
+      	<div class="text-center" id="footerDiv">
+	        <p>
+	          푸터입니다.
+	        </p>
+      	</div>
+		<div class="text-center" id="footerDiv">
+		  <p>
+		    푸터입니다.
+		  </p>
+		</div>
+    </div>
+</footer>
+</th:block>
+</html>

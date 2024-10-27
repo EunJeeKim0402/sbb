@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="footerLayout">
+<style>
+	#footer {
+		border-top: 0.1px solid gray;
+		background-color: whitesmoke;
+		flex-shrink: 0; 
+        padding: 20px; 
+        text-align: center; 
+	}
+</style>
+<footer>
+    <div class="mt-5" id="footer">
+      	<div class="text-center" id="">
+	        <p>
+	          푸터입니다.
+	        </p>
+      	</div>
+    </div>
+</footer>
+</th:block>
+</html>

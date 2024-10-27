@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="footerLayout">
+<style>
+	#footer {
+		border-top: 1px solid rgb(226, 226, 226);
+		background-color: whitesmoke;
+		flex-shrink: 0; 
+        padding: 40px; 
+		align-items: center;
+		flex-direction: column; 
+		display: flex; 
+        justify-content: center;
+        align-items: center;
+		font-size: 13px;
+	}
+	.footerDiv {
+		width: 1300px;
+	}
+	#div1 {
+		border-top: 1px solid rgb(226, 226, 226);
+		border-bottom: 1px solid rgb(226, 226, 226);
+		padding: 20px 0px 0px 0px;
+		font-weight: 600;
+	}
+	#div2 {
+		display: flex;
+	}
+	#div2-1 {
+		font-weight: bold;
+		padding: 20px 0px 20px 0px;
+		width: 7%;
+	}
+</style>
+<footer>
+    <div class="mt-5" id="footer">
+      	<div class="footerDiv" id="div1">
+	        <p>
+	          공지사항
+	        </p>
+      	</div>
+		<div class="footerDiv" id="div2">
+		    <div id="div2-1">
+				사이트
+			</div>
+			<div id="div2-2">
+				<span>사이트1</span>
+				<span>|</span>
+				<span>사이트2</span>
+				<span>|</span>
+				<span>사이트3</span>
+			</div>
+		</div>
+    </div>
+</footer>
+</th:block>
+</html>
