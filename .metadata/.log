@@ -1547,3 +1547,6 @@ java.lang.IllegalStateException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-10-29 07:30:50.797
 !MESSAGE Started org.springframework.tooling.boot.ls LS process 29336
+
+!ENTRY org.eclipse.core.jobs 2 2 2024-10-29 07:56:19.465
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.lsp4e.LanguageServerWrapper$2
