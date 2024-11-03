@@ -36,5 +36,10 @@ public class UserService {
 			throw new DataNotFoundException("siteuser not found");
 		}
 	}
+	
+	public void socialLogin(String code, String registrationId) {
+        System.out.println("code = " + code);
+        System.out.println("registrationId = " + registrationId);
+    }
 
 }

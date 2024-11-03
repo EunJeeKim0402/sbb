@@ -1,6 +1,7 @@
 package com.mysite.sbb.user;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import lombok.RequiredArgsConstructor;
 
@@ -58,5 +60,11 @@ public class UserController {
 	    }
 	    return "login_form";
 	}
+	
+    @GetMapping("/code/google")
+    public void googleLogin(@RequestParam String code) {
+    	String registrationId = "google";
+        userService.socialLogin(code, registrationId);
+    }
 
 }

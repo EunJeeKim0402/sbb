@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="div3"/>
+		<item key="selection" value="spring-boot-starter-thymeleaf"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="spring-boot-starter-thymeleaf"/>
+			<item value="spring-boot-starter-oauth2-client"/>
+			<item value="spring-boot-starter-security"/>
 			<item value="div3"/>
 			<item value="width:"/>
 			<item value="table"/>
@@ -20,9 +23,6 @@
 			<item value="alert"/>
 			<item value="h1"/>
 			<item value=".h1"/>
-			<item value=".h1, h1"/>
-			<item value="sitename"/>
-			<item value="url"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -35,7 +35,7 @@ dependencies {
 	implementation 'org.commonmark:commonmark:0.21.0' // 버전정보 필요 이유 : 스프링부트가 내부적으로 관리하는 라이브러리면 버전정보가 필요 없는것임
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // 해당 라이브러리가 테스트 실행 시에만 사용됨을 의미함
 	testImplementation 'org.junit.jupiter:junit-jupiter'
-	
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
