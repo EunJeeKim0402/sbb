@@ -8,10 +8,12 @@ group = 'com.mysite'
 version = '0.0.1-SNAPSHOT' // 프로그램이 변경되어 새로 배포할때 값을 매번 증가시키는걸 권장
 
 java {
+/*
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
-	//sourceCompatibility = '19'
+	*/
+	sourceCompatibility = '19'
 }
 
 repositories {
@@ -38,6 +40,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-oauth2-client' // OAuth2 클라이언트 의존성
+    implementation 'org.springframework.security:spring-security-web'
+    implementation 'org.springframework.security:spring-security-config'
 	
 	implementation('org.springframework.boot:spring-boot-starter-actuator')
 	implementation('org.springframework.boot:spring-boot-starter-data-rest')
