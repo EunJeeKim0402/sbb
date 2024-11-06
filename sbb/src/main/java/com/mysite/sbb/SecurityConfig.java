@@ -25,17 +25,12 @@ public class SecurityConfig {
 				.csrf((csrf) -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))) // h2-console은 제외
 				.headers((headers) -> headers.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))) // X-Frame-Opton 헤더를 DENY -> SAMEORIGIN으로 변경
 				.formLogin((formLogin) -> formLogin.loginPage("/user/login").defaultSuccessUrl("/")) // 로그인url 등록
-				.logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")).logoutSuccessUrl("/").invalidateHttpSession(true)); // 로그아웃
-
-		//	    http
-//        .authorizeRequests()
-//            .requestMatchers("/", "/login", "/error", "/oauth2/**").permitAll() // OAuth2 URL 허용
-//            .anyRequest().authenticated() // 나머지 요청은 인증 필요
-//        .and()
-//        .oauth2Login()
-//            .loginPage("/login")  // 기본 로그인 페이지 설정
-//            .defaultSuccessUrl("/", true)  // 성공 시 이동할 URL 설정
-//            .failureUrl("/error"); // 실패 시 이동할 URL 설정
+				.logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")).logoutSuccessUrl("/").invalidateHttpSession(true)) // 로그아웃
+				.oauth2Login(oauth2Login -> oauth2Login
+		                .loginPage("/user/login")  // 기본 로그인 페이지 지정
+		                .defaultSuccessUrl("/", true)  // 로그인 성공 시 이동
+		                .failureUrl("/error")  // 로그인 실패 시 이동
+		            );
 
 	    return http.build();
 	}

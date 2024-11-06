@@ -24,5 +24,15 @@ public class SiteUser {
 	
 	@Column(unique = true)
 	private String email;
+	
+	private String provider; // 일반로그인 / 구글로그인
+	
+	private String providerId; // 외부로그인 시 제공하는 id값
+	
+	private String createDt; // 생성일
+	
+	private String modifyDt; // 마지막 수정일
+	
+	private String useYn; // 사용여부
 
 }
