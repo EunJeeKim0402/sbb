@@ -1,0 +1,28 @@
+spring.application.name=sbb
+server.port = 8888
+
+# DATABASE
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+spring.datasource.url=jdbc:h2:~/local
+#spring.datasource.url=jdbc:h2:tcp://localhost:8888/~/test
+#spring.datasource.url=jdbc:h2:tcp://localhost/~/test
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+#spring.h2.console.enabled=true : H2콘솔에 접속할건지 묻는 항목. H2콘솔은 H2 DB를 웹 UI로 보여줌
+#spring.h2.console.path=/h2-console : H2콘솔로 접속하기위한 URL경로
+#spring.datasource.url=jdbc:h2:~/local : DB에 접속하기위한 경로
+#spring.datasource.driverClassName=org.h2.Driver : DB에 접속할 때 사용하는 드라이버 클래스명
+#spring.datasource.username=sa : DB사용자명. 기본값이 sa
+#spring.datasource.password= : DB 비밀번호.
+
+# JPA
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.show_sql=true
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect : 스프링부트+하이버네이트 사용 시 필요한 설정항목.
+#spring.jpa.hibernate.ddl-auto=update : 엔티티를 기준으로 DB의 테이블을 생성하는 규칙 설정
+
+# 구글 로그인
