@@ -68,7 +68,8 @@
 
 	}
 	#imgDiv {
-		
+		flex-wrap: wrap;
+		justify-content: space-between;
 	}
 	#imgDiv img {
 		width: 100%;
@@ -85,6 +86,7 @@
 		flex-direction: column; 
 		align-items: center; 
 		text-align: center;
+		width: 25%;
 	}
 	#imgDiv span {
 		font-size: 15px;
@@ -129,29 +131,11 @@
 			<p id="moreProducts">더보기 ></p>
 		</div>
 		<div style="width:75%; display: flex;">
-			<div class="mainProducts">
-				<img src="https://sitem.ssgcdn.com/95/65/51/item/1000565516595_i1_750.jpg">
-				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span>10%</span>
-				<span>5,000원</span>
-			</div>
-			<div class="mainProducts">
-				<img src="https://sitem.ssgcdn.com/95/65/51/item/1000565516595_i1_750.jpg">
-				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span>10%</span>
-				<span>5,000원</span>
-			</div>
-			<div class="mainProducts">
-				<img src="https://sitem.ssgcdn.com/95/65/51/item/1000565516595_i1_750.jpg">
-				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span>10%</span>
-				<span>5,000원</span>
-			</div>
-			<div class="mainProducts">
-				<img src="https://sitem.ssgcdn.com/95/65/51/item/1000565516595_i1_750.jpg">
-				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span>10%</span>
-				<span>5,000원</span>
+			<div class="mainProducts" th:each="product : ${productLists}">
+			    <img th:src="@{${product.productImage}}" alt="상품 이미지">
+			    <p th:text="${product.productName}"></p>
+			    <span>10%</span>
+			    <span th:text="${product.productPrice}"></span>원
 			</div>
 		</div>
 	</div>
@@ -164,26 +148,11 @@
 			</div>
 			<p id="moreProducts" style="margin: 0;">더보기 ></p>
 		</div>
-		<div id="imgDiv" style="display: flex; width: 100%;">
-			<div>
-				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
-				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span><b>5,000</b>원</span>
-			</div>
-			<div>
-				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
-				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span><b>5,000</b>원</span>
-			</div>
-			<div>
-				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
-				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span><b>5,000</b>원</span>
-			</div>
-			<div>
-				<img src="https://www.cheonyu.com/_DATA/product/69700/69753_1702882899.jpg">
-				<p>제품명제품명제품명제품명제품명제품명제품명제품명제품명</p>
-				<span><b>5,000</b>원</span>
+		<div id="imgDiv" th:each="product : ${topProducts}" style="width: 100%;">
+			<div id="imgDiv-1" style="border:1px solid black;">
+				<img th:src="@{${product.productImage}}" alt="상품 이미지" style="width: 100%; height: auto; border-radius: 8px;">
+				<p th:text="${product.productName}" style="margin-top: 10px; font-weight: bold; font-size: 14px;"></p>
+				<span><b th:text="${product.productPrice}"></b>원</span>
 			</div>
 		</div>
 	</div>

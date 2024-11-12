@@ -1,6 +1,7 @@
 package com.mysite.sbb;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -44,9 +45,13 @@ public class MainController {
 			@RequestParam(value = "kw", defaultValue = "") String kw) {
 		Page<Question> paging = this.questionService.getList(page, kw);
 		List<Product> productPaging = this.productService.getList();
+		List<Product> productLists = productPaging.stream().limit(4).collect(Collectors.toList());
+		
+		List<Product> topProducts = this.productService.findBySellCount();
 		
 		model.addAttribute("paging", paging);
-		model.addAttribute("productPaging", productPaging);
+		model.addAttribute("productLists", productLists);
+		model.addAttribute("topProducts", topProducts);
 		model.addAttribute("kw", kw);
 	    return "main";
 	}

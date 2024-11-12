@@ -40,4 +40,6 @@ public class Product {
 	
 	private LocalDateTime productModifyDt;
 	
+	private Integer productSellCount;
+	
 }

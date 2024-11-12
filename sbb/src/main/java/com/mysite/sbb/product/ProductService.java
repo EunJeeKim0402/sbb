@@ -25,5 +25,9 @@ public class ProductService {
 		sorts.add(Sort.Order.desc("createDate"));
 		return this.productRepository.findAll();
 	}
+	
+	public List<Product> findBySellCount() {
+		return this.productRepository.findTop4ByOrderByProductSellCountDesc();
+	}
 
 }
