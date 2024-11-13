@@ -68,13 +68,13 @@
 
 	}
 	#imgDiv {
-		flex-wrap: wrap;
-		justify-content: space-between;
+		display: flex;
+	    flex-wrap: wrap;
+	    justify-content: space-between;
 	}
 	#imgDiv img {
 		width: 100%;
 		border-radius: 15px;
-		padding: 10px;
 	}
 	#imgDiv p {
 		font-size: 13px;
@@ -82,7 +82,6 @@
 		text-align: center;
 	}
 	#imgDiv div {
-		display: flex; 
 		flex-direction: column; 
 		align-items: center; 
 		text-align: center;
@@ -148,12 +147,12 @@
 			</div>
 			<p id="moreProducts" style="margin: 0;">더보기 ></p>
 		</div>
-		<div id="imgDiv" th:each="product : ${topProducts}" style="width: 100%;">
-			<div id="imgDiv-1" style="border:1px solid black;">
-				<img th:src="@{${product.productImage}}" alt="상품 이미지" style="width: 100%; height: auto; border-radius: 8px;">
-				<p th:text="${product.productName}" style="margin-top: 10px; font-weight: bold; font-size: 14px;"></p>
-				<span><b th:text="${product.productPrice}"></b>원</span>
-			</div>
+		<div id="imgDiv">
+		    <div th:each="product : ${topProducts}" style="width: 25%; margin-bottom: 20px; padding: 10px; text-align: center; border-radius: 8px; display: flex; flex-direction: column; align-items: center;">
+		        <img th:src="@{${product.productImage}}" alt="상품 이미지" style="width: 100%; height: auto; border-radius: 8px;">
+		        <p th:text="${product.productName}" style="margin-top: 10px; font-weight: bold; font-size: 14px;"></p>
+		        <span><b th:text="${product.productPrice}"></b>원</span>
+		    </div>
 		</div>
 	</div>
 	<!-------------------------------------------- 네번째 div -------------------------------------------->

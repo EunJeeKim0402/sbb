@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="starter-oauth2-client"/>
+		<item key="selection" value="imgDiv"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="imgDiv"/>
+			<item value="product"/>
 			<item value="starter-oauth2-client"/>
 			<item value="spring-security-config"/>
 			<item value="spring-security-web"/>
@@ -18,11 +20,9 @@
 			<item value="div3"/>
 			<item value="width:"/>
 			<item value="table"/>
-			<item value="imgDiv"/>
 			<item value="div3div3"/>
 			<item value="moreProducts"/>
 			<item value="searchForm"/>
-			<item value="search_kw"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -32,6 +32,6 @@
 		<item key="DIALOG_Y_ORIGIN" value="797"/>
 		<item key="DIALOG_WIDTH" value="418"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕"/>
 	</section>
 </section>
