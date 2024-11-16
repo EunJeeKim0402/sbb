@@ -3,5 +3,5 @@
 - Do it! 점프 투 스프링 부트 3
   <br><br>
 
-# 스펙
+- 스펙
 Java, Spring Boot, JPA, H2, eclipse
