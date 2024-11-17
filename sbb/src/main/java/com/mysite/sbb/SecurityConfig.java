@@ -1,5 +1,6 @@
 package com.mysite.sbb;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,10 +14,19 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.mysite.sbb.user.SbbOAuth2UserService;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
+	
+	@Autowired
+    private SbbOAuth2UserService sbbOAuth2UserService;
+
+    public SecurityConfig(SbbOAuth2UserService sbbOAuth2UserService) {
+        this.sbbOAuth2UserService = sbbOAuth2UserService;
+    }
 	
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -30,6 +40,7 @@ public class SecurityConfig {
 		                .loginPage("/user/login")  // 기본 로그인 페이지 지정
 		                .defaultSuccessUrl("/", true)  // 로그인 성공 시 이동
 		                .failureUrl("/error")  // 로그인 실패 시 이동
+		                .userInfoEndpoint().userService(sbbOAuth2UserService)
 		            );
 
 	    return http.build();

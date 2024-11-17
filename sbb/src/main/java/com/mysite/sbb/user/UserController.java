@@ -60,11 +60,5 @@ public class UserController {
 	    }
 	    return "login_form";
 	}
-	
-    @GetMapping("/code/google")
-    public void googleLogin(@RequestParam String code) {
-    	String registrationId = "google";
-        userService.socialLogin(code, registrationId);
-    }
 
 }
