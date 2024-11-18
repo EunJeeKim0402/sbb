@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.mysite.sbb.user.OAuth2UserService.java&apos; to &apos;SbbOAuth2UserService.java&apos;&#x0D;&#x0A;- Original project: &apos;sbb&apos;&#x0D;&#x0A;- Original element: &apos;com.mysite.sbb.user.OAuth2UserService.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.mysite.sbb.user.SbbOAuth2UserService.java&apos;" description="Rename compilation unit &apos;OAuth2UserService.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.mysite.sbb.user{OAuth2UserService.java" name="SbbOAuth2UserService.java" references="false" stamp="1731883454008" version="1.0"/>
+</session>
