@@ -30,5 +30,13 @@ public class ProductController {
 		model.addAttribute("paging", paging);
 		return "";
 	}
+	
+	// 상품 상세페이지
+	@GetMapping("/product_detail")
+	public String productDetail(Model model, @RequestParam("productId") int productId) {
+	    Product product = productService.findProductById(productId); 
+	    model.addAttribute("product", product);
+	    return "product_detail";
+	}
 
 }

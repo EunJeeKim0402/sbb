@@ -30,4 +30,9 @@ public class ProductService {
 		return this.productRepository.findTop4ByOrderByProductSellCountDesc();
 	}
 
+    public Product findProductById(int productId) {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("상품을 찾을 수 없습니다."));
+    }
+
 }
