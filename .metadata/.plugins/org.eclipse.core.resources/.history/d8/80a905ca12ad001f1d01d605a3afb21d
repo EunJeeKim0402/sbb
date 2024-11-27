@@ -9,20 +9,19 @@
 
 	.product-detail-container {
 	    display: flex;
+		background-color: pink;
 		width: 100%;
 	}
 
 	.product-image img {
-	    width: 550px;
-	    height: 550px;
+	    width: 600px;
+	    height: 600px;
 	    object-fit: cover;
 	    margin-right: 20px;
 	}
 
 	.product-info {
-	    width: 100%;
-		background-color: pink;
-		padding : 10px 10px 10px 110px;
+	    max-width: 600px;
 	}
 
 	.product-name {
@@ -82,19 +81,23 @@
 	        <div class="product-info">
 	            <h1 class="product-name" th:text="${product.productName}"></h1>
 	            <p class="product-description" th:text="${product.productType}"></p>
+	            
 	            <div class="product-price">
 	                <span class="price-label">가격:</span>
 	                <span class="price-value" th:text="${product.productPrice}"> 원</span>
 	            </div>
+	            
 	            <div class="product-options">
 	                <label for="quantity">수량:</label>
 	                <input type="number" id="quantity" name="quantity" value="1" min="1">
 	            </div>
+
 	            <div class="add-to-cart">
 	                <button type="button" class="add-to-cart-button">장바구니에 추가</button>
 	            </div>
 	        </div>
 	    </div>
+
 	    <div class="product-reviews">
 	        <h2>상품 리뷰</h2>
 	        <div class="reviews-list">

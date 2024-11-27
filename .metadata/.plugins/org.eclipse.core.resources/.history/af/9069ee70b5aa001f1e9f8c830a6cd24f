@@ -68,15 +68,13 @@
 
 	}
 	#imgDiv {
-		width: 100%; 
 		display: flex;
-		flex-wrap: wrap; /* 내부 요소가 여러 줄로 배치되도록 설정 */
-		    justify-content: space-between;	
+	    flex-wrap: wrap;
+	    justify-content: space-between;
 	}
 	#imgDiv img {
 		width: 100%;
 		border-radius: 15px;
-		padding: 10px;
 	}
 	#imgDiv p {
 		font-size: 13px;
@@ -122,7 +120,7 @@
 	    <button class="nav-button prev" onclick="prevSlide()">&#10094;</button>
 	    <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
 	</div>
-	<!-------------------------------------------- 두번째 div -------------------------------------------->
+	<!-------------------------------------------- 두번째 div(HOT) -------------------------------------------->
 	<div style="background-color: whitesmoke; width:100%; display: flex; padding: 50px 0px;">
 		<div style="width:25%; padding: 45px 0px 0px 25px;" id="mainDiv1">
 			<h1>HOT</h1>
@@ -133,7 +131,8 @@
 		</div>
 		<div style="width:75%; display: flex;">
 			<div class="mainProducts" th:each="product : ${productLists}">
-			    <img th:src="@{${product.productImage}}" alt="상품 이미지">
+			    <img onclick="productDetail(${product.productId});" th:src="@{${product.productImage}}" alt="상품 이미지">
+				<input hidden="${product.productId}">
 			    <p th:text="${product.productName}"></p>
 			    <span>10%</span>
 			    <span th:text="${product.productPrice}"></span>원
@@ -149,12 +148,12 @@
 			</div>
 			<p id="moreProducts" style="margin: 0;">더보기 ></p>
 		</div>
-		<div id="imgDiv" th:each="product : ${topProducts}" style="">
-			<div id="imgDiv-1" style="border:1px solid black;">
-				<img th:src="@{${product.productImage}}" alt="상품 이미지" style="width: 100%; height: auto; border-radius: 8px;">
-				<p th:text="${product.productName}" style="margin-top: 10px; font-weight: bold; font-size: 14px;"></p>
-				<span><b th:text="${product.productPrice}"></b>원</span>
-			</div>
+		<div id="imgDiv">
+		    <div th:each="product : ${topProducts}" style="width: 25%; margin-bottom: 20px; padding: 10px; text-align: center; border-radius: 8px; display: flex; flex-direction: column; align-items: center;">
+		        <img th:src="@{${product.productImage}}" alt="상품 이미지" style="width: 100%; height: auto; border-radius: 8px;">
+		        <p th:text="${product.productName}" style="margin-top: 10px; font-weight: bold; font-size: 14px;"></p>
+		        <span><b th:text="${product.productPrice}"></b>원</span>
+		    </div>
 		</div>
 	</div>
 	<!-------------------------------------------- 네번째 div -------------------------------------------->

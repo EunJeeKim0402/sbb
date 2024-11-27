@@ -9,20 +9,19 @@
 
 	.product-detail-container {
 	    display: flex;
+		background-color: pink;
 		width: 100%;
 	}
 
 	.product-image img {
-	    width: 550px;
-	    height: 550px;
+	    width: 600px;
+	    height: 600px;
 	    object-fit: cover;
 	    margin-right: 20px;
 	}
 
 	.product-info {
-	    width: 100%;
-		background-color: pink;
-		padding : 10px 10px 10px 110px;
+	    max-width: 600px;
 	}
 
 	.product-name {
@@ -95,6 +94,7 @@
 	            </div>
 	        </div>
 	    </div>
+
 	    <div class="product-reviews">
 	        <h2>상품 리뷰</h2>
 	        <div class="reviews-list">
