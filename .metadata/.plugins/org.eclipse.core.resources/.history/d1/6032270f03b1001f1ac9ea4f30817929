@@ -158,24 +158,24 @@
 	function add() {
 	    const amounts = document.getElementById("amounts");
 	    const sellPrice = document.getElementById("sell_price");
-	    let quantity = parseInt(amounts.value); 
-	    const price = parseInt(sellPrice.value);
+	    let quantity = parseInt(amounts.value); // 수량 가져오기
+	    const price = parseInt(sellPrice.value); // 가격 가져오기
 
-	    amounts.value = ++quantity;
-	    const sum = quantity * price;
-	    document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
+	    amounts.value = ++quantity; // 수량 증가
+	    const sum = quantity * price; // 합계 계산
+	    document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR'); // 금액 업데이트
 	}
 
 	function del() {
 	    const amounts = document.getElementById("amounts");
 	    const sellPrice = document.getElementById("sell_price");
-	    let quantity = parseInt(amounts.value);
-	    const price = parseInt(sellPrice.value);
+	    let quantity = parseInt(amounts.value); // 수량 가져오기
+	    const price = parseInt(sellPrice.value); // 가격 가져오기
 
 	    if (quantity > 1) {
-	        amounts.value = --quantity;
-	        const sum = quantity * price;
-	        document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
+	        amounts.value = --quantity; // 수량 감소
+	        const sum = quantity * price; // 합계 계산
+	        document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR'); // 금액 업데이트
 	    }
 	}
 
