@@ -22,7 +22,7 @@
 	.product-info {
 	    width: 100%;
 		background-color: pink;
-		padding : 10px 10px 10px 110px;
+		padding : 30px 10px 10px 110px;
 	}
 
 	.product-name {
@@ -39,6 +39,7 @@
 	    font-size: 1.5em;
 	    color: #333;
 	    margin-bottom: 20px;
+		margin-top: 30px;
 	}
 
 	.product-options {
@@ -83,9 +84,14 @@
 	            <h1 class="product-name" th:text="${product.productName}"></h1>
 	            <p class="product-description" th:text="${product.productType}"></p>
 	            <div class="product-price">
-	                <span class="price-label">가격:</span>
-	                <span class="price-value" th:text="${product.productPrice}"> 원</span>
+	                <span class="price-value" th:text="${product.productPrice}"></span>
+					<span class="price-label"> 원</span>
 	            </div>
+				<hr />
+				<div class="product-description2">
+				    <label>구매혜택</label>
+				    <span>1000포인트 적립 예정</span>
+				</div>
 	            <div class="product-options">
 	                <label for="quantity">수량:</label>
 	                <input type="number" id="quantity" name="quantity" value="1" min="1">
