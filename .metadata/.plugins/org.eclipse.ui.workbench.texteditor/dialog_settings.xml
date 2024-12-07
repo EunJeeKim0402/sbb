@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="가격"/>
+		<item key="selection" value="amounts"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="amounts"/>
+			<item value="id=&quot;amounts"/>
+			<item value="input"/>
+			<item value="inpput"/>
+			<item value="product-options"/>
+			<item value="buttons2"/>
+			<item value="&lt;span class=&quot;price-label&quot;&gt; 원&lt;/span&gt;"/>
+			<item value="수량"/>
+			<item value=".product-description2"/>
+			<item value="description2"/>
+			<item value="product-description2"/>
+			<item value="product-description"/>
+			<item value="product-name"/>
 			<item value="가격"/>
 			<item value="description"/>
-			<item value="imgDiv"/>
-			<item value="product"/>
-			<item value="starter-oauth2-client"/>
-			<item value="spring-security-config"/>
-			<item value="spring-security-web"/>
-			<item value="security-oauth2-client"/>
-			<item value="spring-boot-starter-thymeleaf"/>
-			<item value="spring-boot-starter-oauth2-client"/>
-			<item value="spring-boot-starter-security"/>
-			<item value="div3"/>
-			<item value="width:"/>
-			<item value="table"/>
-			<item value="div3div3"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -32,6 +32,6 @@
 		<item key="DIALOG_Y_ORIGIN" value="797"/>
 		<item key="DIALOG_WIDTH" value="418"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕"/>
 	</section>
 </section>
