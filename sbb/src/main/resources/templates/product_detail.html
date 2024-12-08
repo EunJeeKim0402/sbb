@@ -134,14 +134,14 @@
             <hr />
             <form name="form1">
                 <input type="button" class="minusButton" value=" - " onclick="del();">
-                <input type="hidden" name="sell_price" id="sell_price" value="${product.productPrice}">
+                <input type="hidden" name="sell_price" id="sell_price" th:value="${product.productPrice}">
                 <input type="text" class="priceInput" name="amounts" id="amounts" value="1" size="3" oninput="updatePrice();">
                 <input type="button" class="plusButton" value=" + " onclick="add();">
                 <div>금액: <span id="my_sum" th:text="${product.productPrice}"></span> 원</div>
             </form>
         </div>
         <div class="add-to-cart">
-            <button type="button" class="add-to-cart-button" id="buttons1">구매하기</button>
+            <button type="button" class="add-to-cart-button" id="buttons1" onclick="purchase()">구매하기</button>
             <button type="button" class="add-to-cart-button" id="buttons2">장바구니</button>
             <button type="button" class="add-to-cart-button" id="buttons3">♡ 0</button>
         </div>
@@ -164,31 +164,23 @@
         const amounts = document.getElementById("amounts");
         const sellPrice = document.getElementById("sell_price");
 
-        // 수량 값을 얻을 때, 값이 숫자인지 확인
-        let quantity = parseInt(amounts.value);
-        
+        let quantity = Number(amounts.value); // Number로 변경
+
         if (isNaN(quantity) || quantity < 1) {
             quantity = 1;  // 수량이 잘못된 값일 경우 기본값 1
         }
 
-        const price = parseInt(sellPrice.value);
-
-        // 수량 증가
         quantity++;  // 수량 증가
         amounts.value = quantity;
-
-        // 합계 계산
-        const sum = quantity * price;
 		
-		console.log(sum);
-        document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
+        updatePrice();
     }
 
     function del() {
         const amounts = document.getElementById("amounts");
         const sellPrice = document.getElementById("sell_price");
 
-        let quantity = parseInt(amounts.value);
+        let quantity = Number(amounts.value); // Number로 변경
 
         if (isNaN(quantity) || quantity <= 1) {
             quantity = 1;  // 수량이 잘못되거나 1보다 작은 값이면 1로 고정
@@ -196,29 +188,66 @@
             quantity--;  // 수량 감소
         }
 
-        const price = parseInt(sellPrice.value);
-
         amounts.value = quantity;
-        const sum = quantity * price;
-		console.log(sum);
-        document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
+		
+        updatePrice();
     }
 
     // 가격 업데이트 함수
     function updatePrice() {
         const amounts = document.getElementById("amounts");
         const sellPrice = document.getElementById("sell_price");
-        
-        // 수량이 숫자인지 확인하고 유효하지 않으면 1로 설정
-        let quantity = parseInt(amounts.value);
+
+        let quantity = Number(amounts.value); // Number로 변경
+
         if (isNaN(quantity) || quantity < 1) {
-            quantity = 1;  
+            quantity = 1;
             amounts.value = quantity;  // 수량 필드 값 수정
         }
 
-        const price = parseInt(sellPrice.value);
+        const price = Number(sellPrice.value); // Number로 변환하여 가격 확인
         const sum = quantity * price;
+		
+		console.log(quantity);
+		console.log(sellPrice);
+
         document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
+    }
+	
+	// 상품결제 시 결제모듈 연동
+	function purchase() {
+        const amounts = document.getElementById("amounts");
+        const sellPrice = document.getElementById("sell_price");
+
+        const quantity = Number(amounts.value);
+        const price = Number(sellPrice.value);
+        const totalAmount = quantity * price; // 총 결제 금액
+
+        // 이니시스 결제 준비 요청
+        fetch('/api/payment/prepare', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                productId: '',
+                quantity: quantity,
+                totalAmount: totalAmount,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // 이니시스 결제 페이지로 리디렉션
+                location.href = data.paymentUrl;
+            } else {
+                alert('결제 준비 실패: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('결제 준비 중 오류 발생');
+        });
     }
 </script>
 </html>
