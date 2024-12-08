@@ -1,0 +1,221 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+<style>
+	body {
+	    font-family: Arial, sans-serif;
+	    margin: 0;
+	    padding: 0;
+	}
+
+	.product-detail-container {
+	    display: flex;
+		width: 100%;
+		margin-top: 5%;
+	}
+
+	.product-image img {
+	    width: 550px;
+	    height: 550px;
+	    object-fit: cover;
+	    margin-right: 20px;
+	}
+
+	.product-info {
+	    width: 100%;
+		padding : 30px 10px 10px 110px;
+	}
+
+	.product-name {
+	    font-size: 1.5em;
+	    margin-bottom: 10px;
+	}
+
+	.product-description {
+	    font-size: 1.1em;
+	    margin-bottom: 15px;
+	}
+
+	.product-price {
+	    font-size: 1.5em;
+	    color: #333;
+	    margin-bottom: 20px;
+		margin-top: 20px;
+	}
+
+	.product-options {
+	    margin-bottom: 20px;
+		background-color: rgb(240, 240, 240);
+		padding: 30px;
+	}
+
+	.add-to-cart-button {
+	    padding: 10px 20px;
+	    border: none;
+	    cursor: pointer;
+	    font-size: 1.2em;
+		width: 25%;
+	}
+
+	#buttons1 {
+		background-color: #333;
+		color: white;
+	}
+	
+	#buttons2, #buttons3 {
+		background-color: white;
+		border: 1px solid gray;
+	}
+	
+	#buttons2:hover, #buttons3:hover {
+		background-color: rgb(244, 244, 244);
+	}
+
+	.product-reviews {
+	    margin-top: 40px;
+	}
+
+	.review-item {
+	    margin-bottom: 20px;
+	}
+
+	.review-author {
+	    font-weight: bold;
+	}
+
+	.review-rating {
+	    color: #ffcc00;
+	}
+	
+	.product-description2 {
+	    font-size: 0.9em;
+	}
+	.product-description2 label {
+		font-weight: bold;
+		margin-right: 10px;
+		margin-bottom: 30px;
+	}
+	
+	.minusButton, .plusButton {
+		border: 1px solid darkgray;
+		border-radius: 0%;
+		height: 2em;
+	}
+	.priceInput {
+		border: 1px solid darkgray;
+		border-radius: 0%;
+		text-align: center;
+		height: 2em;
+	}
+
+</style>
+	<div class="product-detail-container">
+	        <div class="product-image">
+	            <img th:src="@{${product.productImage}}" alt="상품 이미지">
+	        </div>
+	        <div class="product-info">
+	            <h1 class="product-name" th:text="${product.productName}"></h1>
+	            <p class="product-description" th:text="${product.productType}"></p>
+	            <div class="product-price">
+	                <span class="price-value" th:text="${product.productPrice}"></span>
+					<span class="price-label"> 원</span>
+	            </div>
+				<hr />
+				<div class="product-description2">
+				    <label>구매혜택</label>
+				    <span>1000포인트 적립 예정</span>
+				</div>
+	            <div class="product-options">
+	                <label for="quantity">수량</label>
+					<hr />
+					<form name="form1">
+					    <input type="button" class="minusButton" value=" - " onclick="del();">
+					    <input type="hidden" name="sell_price" id="sell_price" value="5000">
+						<input type="text" class="priceInput" name="amounts" id="amounts" value="1" size="3" oninput="updatePrice();">
+					    <input type="button" class="plusButton" value=" + " onclick="add();">
+					    <div>금액: <span id="my_sum">5,000</span> 원</div>
+					</form>
+				</div>
+	            <div class="add-to-cart">
+	                <button type="button" class="add-to-cart-button" id="buttons1">구매하기</button>
+					<button type="button" class="add-to-cart-button" id="buttons2">장바구니</button>
+					<button type="button" class="add-to-cart-button" id="buttons3">♡ 0</button>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="product-reviews">
+	        <h2>상품 리뷰</h2>
+	        <div class="reviews-list">
+	            <!-- 리뷰 목록을 동적으로 표시할 곳 -->
+	            <div class="review-item">
+	                <p class="review-author">작성자: 김떙떙</p>
+	                <p class="review-text">리뷰내용~~!</p>
+	                <span class="review-rating">평점: ★★★★☆</span>
+	            </div>
+	        </div>
+	    </div>
+</div>
+<script layout:fragment="script" type="text/javascript">
+	/*
+	const delete_elements = document.getElementsByClassName("delete");
+	Array.from(delete_elements).forEach(function(element) {
+		element.addEventListener('click', function() {
+			if(confirm("정말로 삭제하시겠습니까?")) {
+				location.href = this.dataset.uri;
+			};
+		});
+	});
+	
+	const recommend_elements = document.getElementsByClassName("recommend");
+	Array.from(recommend_elements).forEach(function(element) {
+		element.addEventListener('click', function() {
+			if(confirm("정말로 추천하시겠습니까?")) {
+				location.href = this.dataset.uri;
+			};
+		});
+	});
+	*/
+	
+	// 상품 값 버튼으로 더하고 빼는 버튼
+	function add() {
+	    const amounts = document.getElementById("amounts");
+	    const sellPrice = document.getElementById("sell_price");
+	    let quantity = parseInt(amounts.value); 
+	    const price = parseInt(sellPrice.value);
+
+	    amounts.value = ++quantity;
+	    const sum = quantity * price;
+	    document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
+	}
+	function del() {
+	    const amounts = document.getElementById("amounts");
+	    const sellPrice = document.getElementById("sell_price");
+	    let quantity = parseInt(amounts.value);
+	    const price = parseInt(sellPrice.value);
+
+	    if (quantity > 1) {
+	        amounts.value = --quantity;
+	        const sum = quantity * price;
+	        document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
+	    }
+	}
+	
+	// 가격 업데이트 함수
+	function updatePrice() {
+	    const amounts = document.getElementById("amounts");
+	    const sellPrice = document.getElementById("sell_price");
+	    let quantity = parseInt(amounts.value);
+	    const price = parseInt(sellPrice.value);
+
+	    if (isNaN(quantity) || quantity < 1) {
+	        quantity = 1;
+	        amounts.value = quantity;
+	    }
+
+	    const sum = quantity * price;
+	    document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
+	}
+
+
+</script>
+</html>
+
