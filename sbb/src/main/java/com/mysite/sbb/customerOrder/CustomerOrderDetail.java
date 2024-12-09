@@ -1,4 +1,4 @@
-package com.mysite.sbb.order;
+package com.mysite.sbb.customerOrder;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class OrderDetail {
+public class CustomerOrderDetail {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
