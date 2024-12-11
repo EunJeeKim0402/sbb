@@ -14,16 +14,17 @@ import java.util.Map;
 @RequestMapping("/api/payment")
 public class PaymentController {
 	
-	@Value("${inicis.merchantKey}") // 가맹점 키
-    private String merchantKey;
+	//@Value("${inicis.merchantKey}") // 가맹점 키
+    //private String merchantKey;
 
-    @Value("${inicis.url.prepare}") // 이니시스 결제 준비 URL
-    private String prepareUrl;
+    //@Value("${inicis.url.prepare}") // 이니시스 결제 준비 URL
+    //private String prepareUrl;
 
-    @Value("${inicis.url.approval}") // 이니시스 결제 승인 URL
-    private String approvalUrl;
+    //@Value("${inicis.url.approval}") // 이니시스 결제 승인 URL
+    //private String approvalUrl;
 
     // 결제 준비 API
+	/*
     @PostMapping("/prepare")
     public Map<String, Object> preparePayment(@RequestBody Payment payment) {
         Map<String, Object> response = new HashMap<>();
@@ -39,7 +40,7 @@ public class PaymentController {
 
             // HTTP 요청을 위한 RestTemplate 사용
             HttpHeaders headers = new HttpHeaders();
-            headers.set("Authorization", "Bearer " + merchantKey);  // 가맹점 키
+            //headers.set("Authorization", "Bearer " + merchantKey);  // 가맹점 키
 
             HttpEntity<Map<String, String>> entity = new HttpEntity<>(paymentData, headers);
             RestTemplate restTemplate = new RestTemplate();
@@ -61,5 +62,6 @@ public class PaymentController {
         }
         return response;
     }
+    */
 
 }
