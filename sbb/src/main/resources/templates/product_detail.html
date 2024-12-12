@@ -116,8 +116,7 @@
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
-<!--아임포트 붙이기 https://velog.io/@poseassome/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%95%84%EC%9E%84%ED%8F%AC%ED%8A%B8import-%EA%B2%B0%EC%A0%9C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <div class="product-detail-container">
     <div class="product-image">
         <img th:src="@{${product.productImage}}" alt="상품 이미지">
@@ -146,7 +145,7 @@
             </form>
         </div>
         <div class="add-to-cart">
-            <button type="button" class="add-to-cart-button" id="buttons1" onclick="purchase()">구매하기</button>
+            <button type="button" class="add-to-cart-button" id="buttons1" onclick="requestPay()">구매하기</button>
             <button type="button" class="add-to-cart-button" id="buttons2">장바구니</button>
             <button type="button" class="add-to-cart-button" id="buttons3">♡ 0</button>
         </div>
@@ -219,40 +218,44 @@
         document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
     }
 	
-	// 상품결제 시 결제모듈 연동
-	function purchase() {
-        const amounts = document.getElementById("amounts");
-        const sellPrice = document.getElementById("sell_price");
-
-        const quantity = Number(amounts.value);
-        const price = Number(sellPrice.value);
-        const totalAmount = quantity * price; // 총 결제 금액
-
-        // 이니시스 결제 준비 요청
-        fetch('/api/payment/prepare', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                productId: '',
-                quantity: quantity,
-                totalAmount: totalAmount,
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // 이니시스 결제 페이지로 리디렉션
-                location.href = data.paymentUrl;
-            } else {
-                alert('결제 준비 실패: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('결제 준비 중 오류 발생');
-        });
-    }
+	// 아임포트 결제 연동중...
+	// https://velog.io/@poseassome/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%95%84%EC%9E%84%ED%8F%AC%ED%8A%B8import-%EA%B2%B0%EC%A0%9C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
+	function requestPay() {
+	  IMP.init('iamport'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
+	  IMP.request_pay({
+	    pg: "inicis",
+	    pay_method: "card",
+	    merchant_uid : 'merchant_'+new Date().getTime(),
+	    name : '결제테스트',
+	    amount : 14000,
+	    buyer_email : 'iamport@siot.do',
+	    buyer_name : '구매자',
+	    buyer_tel : '010-1234-5678',
+	    buyer_addr : '서울특별시 강남구 삼성동',
+	    buyer_postcode : '123-456'
+	  }, function (rsp) { // callback
+	      if (rsp.success) {
+	        //...,
+	        // 결제 성공 시 로직,
+	      } else {
+	        //...,
+	        // 결제 실패 시 로직,
+	      }
+	  });
+	}
+	
+	// 결제 완료 후 응답 메시지 설정
+	function answer(rsp) {
+	    console.log(rsp);
+	    if (rsp.success) {
+	      var msg = '결제가 완료되었습니다.';
+	      alert(msg);
+	      location.href = "결제 완료 후 이동할 페이지 url"
+	    } else {
+	      var msg = '결제에 실패하였습니다.';
+	      msg += '에러내용 : ' + rsp.error_msg;
+	      alert(msg);
+	    }
+	  }
 </script>
 </html>
