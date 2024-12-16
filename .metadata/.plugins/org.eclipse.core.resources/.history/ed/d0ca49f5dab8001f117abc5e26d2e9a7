@@ -113,6 +113,10 @@
     }
 
 </style>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <div class="product-detail-container">
     <div class="product-image">
         <img th:src="@{${product.productImage}}" alt="상품 이미지">
@@ -141,7 +145,7 @@
             </form>
         </div>
         <div class="add-to-cart">
-            <button type="button" class="add-to-cart-button" id="buttons1">구매하기</button>
+            <button type="button" class="add-to-cart-button" id="buttons1" onclick="requestPay()">구매하기</button>
             <button type="button" class="add-to-cart-button" id="buttons2">장바구니</button>
             <button type="button" class="add-to-cart-button" id="buttons3">♡ 0</button>
         </div>
@@ -213,5 +217,33 @@
 
         document.getElementById("my_sum").innerText = sum.toLocaleString('ko-KR');
     }
+	
+	// 아임포트 결제 연동중...
+	// https://velog.io/@poseassome/%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%95%84%EC%9E%84%ED%8F%AC%ED%8A%B8import-%EA%B2%B0%EC%A0%9C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
+	function requestPay() {
+	  IMP.init('iamport'); //iamport 대신 자신의 "가맹점 식별코드"를 사용
+	  IMP.request_pay({
+	    pg: "inicis",
+	    pay_method: "card",
+	    merchant_uid : 'merchant_'+new Date().getTime(),
+	    name : '결제테스트',
+	    amount : 14000,
+	    buyer_email : 'iamport@siot.do',
+	    buyer_name : '구매자',
+	    buyer_tel : '010-1234-5678',
+	    buyer_addr : '서울특별시 강남구 삼성동',
+	    buyer_postcode : '123-456'
+	  }, function (rsp) { // callback
+	      if (rsp.success) {
+	        ...,
+	        // 결제 성공 시 로직,
+	        ...
+	      } else {
+	        ...,
+	        // 결제 실패 시 로직,
+	        ...
+	      }
+	  });
+	}
 </script>
 </html>
